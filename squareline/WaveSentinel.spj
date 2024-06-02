@@ -46,8 +46,8 @@
                 "flags": 17,
                 "strtype": "OBJECT/Position",
                 "intarray": [
-                  0,
-                  -156
+                  88,
+                  -230
                 ],
                 "InheritedType": 7
               },
@@ -743,8 +743,8 @@
                 "flags": 17,
                 "strtype": "OBJECT/Position",
                 "intarray": [
-                  0,
-                  -224
+                  -97,
+                  -230
                 ],
                 "InheritedType": 7
               },
@@ -1263,7 +1263,7 @@
                   {
                     "nid": -2057175924,
                     "strtype": "_style/Bg_Image",
-                    "strval": "assets/WaveSentinelSplash.png",
+                    "strval": "assets/WaveSentinelNew.png",
                     "InheritedType": 5
                   },
                   {
@@ -10654,7 +10654,7 @@
                       {
                         "nid": 2096262642,
                         "strtype": "_style/Bg_Image",
-                        "strval": "assets/BlankPgBkgnd.png",
+                        "strval": "assets\\BlankPgBkgnd.png",
                         "InheritedType": 5
                       },
                       {
@@ -13651,7 +13651,7 @@
               {
                 "disabled": false,
                 "nid": -2038449214,
-                "strtype": "TEXTAREA/EventHandler",
+                "strtype": "_event/EventHandler",
                 "strval": "READY",
                 "childs": [
                   {
@@ -13674,7 +13674,7 @@
                   },
                   {
                     "nid": 1160933127,
-                    "strtype": "_custom/action",
+                    "strtype": "_event/action",
                     "strval": "CALL FUNCTION",
                     "childs": [
                       {
@@ -20570,7 +20570,7 @@
                       {
                         "nid": 1983389605,
                         "strtype": "_style/Bg_Image",
-                        "strval": "assets/BlankPgBkgnd.png",
+                        "strval": "assets\\BlankPgBkgnd.png",
                         "InheritedType": 5
                       },
                       {
@@ -20816,7 +20816,7 @@
                   {
                     "nid": -384548273,
                     "strtype": "_style/Bg_Image",
-                    "strval": "assets/BlankPgBkgnd.png",
+                    "strval": "assets\\BlankPgBkgnd.png",
                     "InheritedType": 5
                   },
                   {
@@ -25589,7 +25589,7 @@
                   {
                     "nid": 397402072,
                     "strtype": "_style/Bg_Image",
-                    "strval": "assets/BlankPgBkgnd.png",
+                    "strval": "assets\\BlankPgBkgnd.png",
                     "InheritedType": 5
                   },
                   {
@@ -36825,7 +36825,7 @@
                       {
                         "nid": 1481239513,
                         "strtype": "_style/Bg_Image",
-                        "strval": "assets/BlankPgBkgnd.png",
+                        "strval": "assets\\BlankPgBkgnd.png",
                         "InheritedType": 5
                       },
                       {
@@ -37071,7 +37071,7 @@
                   {
                     "nid": -1739476875,
                     "strtype": "_style/Bg_Image",
-                    "strval": "assets/BlankPgBkgnd.png",
+                    "strval": "assets\\BlankPgBkgnd.png",
                     "InheritedType": 5
                   },
                   {
@@ -41716,7 +41716,7 @@
                   {
                     "nid": 860725446,
                     "strtype": "_style/Bg_Image",
-                    "strval": "assets/BlankPgBkgnd.png",
+                    "strval": "assets\\BlankPgBkgnd.png",
                     "InheritedType": 5
                   }
                 ],
@@ -51764,7 +51764,7 @@
                       {
                         "disabled": false,
                         "nid": -2000243028,
-                        "strtype": "TEXTAREA/EventHandler",
+                        "strtype": "_event/EventHandler",
                         "strval": "READY",
                         "childs": [
                           {
@@ -51787,7 +51787,7 @@
                           },
                           {
                             "nid": 1560183491,
-                            "strtype": "_custom/action",
+                            "strtype": "_event/action",
                             "strval": "CALL FUNCTION",
                             "childs": [
                               {
@@ -54728,7 +54728,7 @@
                       {
                         "nid": 319925041,
                         "strtype": "_style/Bg_Image",
-                        "strval": "assets/BlankPgBkgnd.png",
+                        "strval": "assets\\BlankPgBkgnd.png",
                         "InheritedType": 5
                       },
                       {
@@ -54974,7 +54974,7 @@
                   {
                     "nid": -380416139,
                     "strtype": "_style/Bg_Image",
-                    "strval": "assets/BlankPgBkgnd.png",
+                    "strval": "assets\\BlankPgBkgnd.png",
                     "InheritedType": 5
                   }
                 ],
@@ -56149,7 +56149,7 @@
                       {
                         "disabled": false,
                         "nid": 704733453,
-                        "strtype": "TEXTAREA/EventHandler",
+                        "strtype": "_event/EventHandler",
                         "strval": "READY",
                         "childs": [
                           {
@@ -56172,7 +56172,7 @@
                           },
                           {
                             "nid": 2025378810,
-                            "strtype": "_custom/action",
+                            "strtype": "_event/action",
                             "strval": "CALL FUNCTION",
                             "childs": [
                               {
@@ -75094,7 +75094,7 @@
                       {
                         "nid": -858855169,
                         "strtype": "_style/Bg_Image",
-                        "strval": "assets/BlankPgBkgnd.png",
+                        "strval": "assets\\BlankPgBkgnd.png",
                         "InheritedType": 5
                       },
                       {
@@ -75340,7 +75340,7 @@
                   {
                     "nid": -389194093,
                     "strtype": "_style/Bg_Image",
-                    "strval": "assets/BlankPgBkgnd.png",
+                    "strval": "assets\\BlankPgBkgnd.png",
                     "InheritedType": 5
                   }
                 ],
@@ -75406,9 +75406,9 @@
     "theme_dark": false,
     "theme_color1": 5,
     "theme_color2": 0,
-    "uiExportFolderPath": "C:\\Users\\VM\\Desktop\\Wave\\WaveSentinel-main\\lib\\ui\\src",
-    "projectExportFolderPath": "C:\\Users\\VM\\Desktop\\Wave\\WaveSentinel-main\\squareline",
-    "backup_cnt": 2109,
+    "uiExportFolderPath": "C:\\Users\\netop\\Downloads\\Wave_Sentinel\\Wave_Sentinel\\WaveSentinel-main\\lib\\ui\\src",
+    "projectExportFolderPath": "C:\\Users\\netop\\Downloads\\Wave_Sentinel\\Wave_Sentinel\\WaveSentinel-main\\squareline",
+    "backup_cnt": 2111,
     "autosave_cnt": 0,
     "lvgl_version": "8.3.6",
     "callfuncsexport": "DONT_EXPORT",

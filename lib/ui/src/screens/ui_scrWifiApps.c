@@ -130,7 +130,7 @@ void ui_scrWifiApps_screen_init(void)
     lv_obj_set_style_text_align(ui_lblWifiScannerJoin, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_lblWifiScannerJoin, &ui_font_Verdana18, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_WifiApps = lv_tabview_add_tab(ui_tabWifiApps, "BLE APPS");
+    ui_WifiApps = lv_tabview_add_tab(ui_tabWifiApps, "WIFI APPS");
 
     ui_btnWifiBack = lv_btn_create(ui_scrWifiApps);
     lv_obj_set_width(ui_btnWifiBack, 90);

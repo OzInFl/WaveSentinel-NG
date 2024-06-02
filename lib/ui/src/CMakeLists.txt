@@ -10,7 +10,7 @@ SET(SOURCES screens/ui_scrSplash.c
     components/ui_comp_hook.c
     ui_helpers.c
     ui_events.c
-    images/ui_img_wavesentinelsplash_png.c
+    images/ui_img_wavesentinelnew_png.c
     images/ui_img_blankpgbkgnd_png.c
     images/ui_img_flippericon_png.c
     images/ui_img_wifilogo_png.c

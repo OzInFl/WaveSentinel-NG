@@ -317,7 +317,7 @@ extern lv_obj_t * ui_lblCC1101StuffFreqKeyboardTitle;
 extern lv_obj_t * ui____initial_actions0;
 
 
-LV_IMG_DECLARE(ui_img_wavesentinelsplash_png);    // assets/WaveSentinelSplash.png
+LV_IMG_DECLARE(ui_img_wavesentinelnew_png);    // assets/WaveSentinelNew.png
 LV_IMG_DECLARE(ui_img_blankpgbkgnd_png);    // assets/BlankPgBkgnd.png
 LV_IMG_DECLARE(ui_img_flippericon_png);    // assets/FlipperIcon.png
 LV_IMG_DECLARE(ui_img_wifilogo_png);    // assets/WifiLogo.png
