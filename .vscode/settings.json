@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "cc1101_regs.h": "c",
+        "*.tcc": "cpp",
+        "string_view": "cpp",
+        "algorithm": "cpp"
+    },
+    "cmake.sourceDirectory": "E:/REPO/WaveSentinel/src"
+}
