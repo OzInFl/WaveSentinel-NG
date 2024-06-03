@@ -5,4 +5,5 @@
 .vscode/ipch
 update_version.py
 squareline/autosave
+squareline/backup
 

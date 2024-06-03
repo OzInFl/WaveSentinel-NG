@@ -16,11 +16,11 @@ void ui_scrSplash_screen_init(void)
     ui_lblSplash = lv_label_create(ui_scrSplash);
     lv_obj_set_width(ui_lblSplash, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_lblSplash, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_lblSplash, 88);
-    lv_obj_set_y(ui_lblSplash, -230);
+    lv_obj_set_x(ui_lblSplash, 87);
+    lv_obj_set_y(ui_lblSplash, 227);
     lv_obj_set_align(ui_lblSplash, LV_ALIGN_CENTER);
     lv_label_set_text(ui_lblSplash, "STATUS");
-    lv_obj_set_style_text_color(ui_lblSplash, lv_color_hex(0xFFBF00), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui_lblSplash, lv_color_hex(0xFDFDFD), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_lblSplash, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_align(ui_lblSplash, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_lblSplash, &ui_font_Verdana12, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -29,7 +29,7 @@ void ui_scrSplash_screen_init(void)
     lv_obj_set_width(ui_lblSplashStatus, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_lblSplashStatus, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_lblSplashStatus, 1);
-    lv_obj_set_y(ui_lblSplashStatus, 223);
+    lv_obj_set_y(ui_lblSplashStatus, -229);
     lv_obj_set_align(ui_lblSplashStatus, LV_ALIGN_CENTER);
     lv_label_set_text(ui_lblSplashStatus, "");
     lv_obj_set_style_text_color(ui_lblSplashStatus, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -40,11 +40,11 @@ void ui_scrSplash_screen_init(void)
     ui_lblVersion = lv_label_create(ui_scrSplash);
     lv_obj_set_width(ui_lblVersion, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_lblVersion, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_lblVersion, -97);
-    lv_obj_set_y(ui_lblVersion, -230);
+    lv_obj_set_x(ui_lblVersion, -93);
+    lv_obj_set_y(ui_lblVersion, 227);
     lv_obj_set_align(ui_lblVersion, LV_ALIGN_CENTER);
     lv_label_set_text(ui_lblVersion, "");
-    lv_obj_set_style_text_color(ui_lblVersion, lv_color_hex(0xFFBF00), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui_lblVersion, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_lblVersion, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_align(ui_lblVersion, LV_TEXT_ALIGN_LEFT, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_lblVersion, &lv_font_montserrat_16, LV_PART_MAIN | LV_STATE_DEFAULT);

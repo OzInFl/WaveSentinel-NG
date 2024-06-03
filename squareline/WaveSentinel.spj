@@ -46,8 +46,8 @@
                 "flags": 17,
                 "strtype": "OBJECT/Position",
                 "intarray": [
-                  88,
-                  -230
+                  87,
+                  227
                 ],
                 "InheritedType": 7
               },
@@ -293,9 +293,9 @@
                         "nid": -110983741,
                         "strtype": "_style/Text_Color",
                         "intarray": [
-                          255,
-                          191,
-                          0,
+                          253,
+                          253,
+                          253,
                           255
                         ],
                         "InheritedType": 7
@@ -395,7 +395,7 @@
                 "strtype": "OBJECT/Position",
                 "intarray": [
                   1,
-                  223
+                  -229
                 ],
                 "InheritedType": 7
               },
@@ -743,8 +743,8 @@
                 "flags": 17,
                 "strtype": "OBJECT/Position",
                 "intarray": [
-                  -97,
-                  -230
+                  -93,
+                  227
                 ],
                 "InheritedType": 7
               },
@@ -991,8 +991,8 @@
                         "strtype": "_style/Text_Color",
                         "intarray": [
                           255,
-                          191,
-                          0,
+                          255,
+                          255,
                           255
                         ],
                         "InheritedType": 7
@@ -60422,7 +60422,7 @@
                       {
                         "nid": -87162954,
                         "strtype": "OBJECT/Hidden",
-                        "strval": "False",
+                        "strval": "True",
                         "InheritedType": 2
                       },
                       {

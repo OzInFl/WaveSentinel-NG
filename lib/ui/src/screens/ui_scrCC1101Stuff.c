@@ -229,7 +229,7 @@ void ui_scrCC1101Stuff_screen_init(void)
     lv_obj_set_x(ui_chkScanPresets, 87);
     lv_obj_set_y(ui_chkScanPresets, -73);
     lv_obj_set_align(ui_chkScanPresets, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_chkScanPresets, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+    lv_obj_add_flag(ui_chkScanPresets, LV_OBJ_FLAG_HIDDEN | LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
     lv_obj_clear_flag(ui_chkScanPresets, LV_OBJ_FLAG_CLICKABLE);      /// Flags
     lv_obj_set_style_text_color(ui_chkScanPresets, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_chkScanPresets, 255, LV_PART_MAIN | LV_STATE_DEFAULT);

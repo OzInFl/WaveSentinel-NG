@@ -10,6 +10,7 @@
 #include "WiFi/WiFix.h"
 #include "BLE/BLE.h"
 #include "SD/SDCard.h"
+#include "Preferences/preferences.h"
 
 #include "Arduino.h"
 #include "Audio.h"
