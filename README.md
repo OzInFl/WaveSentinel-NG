@@ -2,6 +2,8 @@
 
 # Wave Sentinel - NG - Developer Build
 
+Discord Server: https://discord.com/invite/Dmpme8ph88
+
 Web Flasher: https://gtxpro.us/web-based-flash-utility/
 
 Sub-Ghz - WiFi - Bluetooth 5 - Testing and Analysis Device
