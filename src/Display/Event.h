@@ -21,6 +21,7 @@ enum WaveSentinelState
   STATE_AUDIO_TEST,
   STATE_SEND_FLIPPER,
   STATE_WIFI_SCAN,
+  STATE_SEND_BLESPAM,
 };
 
 // Current State

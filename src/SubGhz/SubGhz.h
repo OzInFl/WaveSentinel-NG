@@ -57,6 +57,7 @@ public:
   void sendLastSignal();
   bool send_tesla();
   void sendSamples(int samples[], int samplesLength);
+  void saveSamples();
   bool sendCapture();
 
   void resetProtAnalyzer();

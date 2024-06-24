@@ -6,15 +6,18 @@ SET(SOURCES screens/ui_scrSplash.c
     screens/ui_scrWifiApps.c
     screens/ui_scrRCSWMain.c
     screens/ui_scrCC1101Stuff.c
+    screens/ui_scrBLEApps.c
     ui.c
     components/ui_comp_hook.c
     ui_helpers.c
-    ui_events.c
     images/ui_img_wavesentinelnew_png.c
     images/ui_img_blankpgbkgnd_png.c
     images/ui_img_flippericon_png.c
+    images/ui_img_tticon_png.c
     images/ui_img_wifilogo_png.c
     images/ui_img_analyzericon_png.c
+    images/ui_img_ratbknd200_png.c
+    images/ui_img_bleiconsm_png.c
     images/ui_img_needle_png.c
     images/ui_img_txind_png.c
     images/ui_img_rxind_png.c

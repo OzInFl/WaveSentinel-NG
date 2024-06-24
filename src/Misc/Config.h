@@ -17,11 +17,15 @@
 #define MAX_FILES 50
 
 // ---------------------------------------------------------------------
-// Audio I2S PIN
+// Audio I2S PINS and CONFIG
 // ---------------------------------------------------------------------
 #define I2S_DOUT 37
 #define I2S_BCLK 36
 #define I2S_LRC 35
+
+#define I2S_SAMPLE_RATE 44100
+#define I2S_BUFFER_SIZE 1024 // Buffer size
+#define I2S_BUFFER_COUNT 8   // Buffer count
 
 // ---------------------------------------------------------------------
 // SD PIN
@@ -50,3 +54,4 @@
 #define IR_LED 21
 
 #endif
+

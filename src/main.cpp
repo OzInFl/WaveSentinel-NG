@@ -34,9 +34,11 @@ Audio audio;
 Preferences prefs;
 
 
+
+
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// FUNCTION
+// FUNCTIONS
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------
@@ -60,6 +62,7 @@ void setup()
 {
   Print_Debug("Initializing Stuff...");
 
+  
   // I2S Stuff
   audio.setPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
 
@@ -188,7 +191,7 @@ void loop()
     if (SUBGHZ.ProtAnalyzerLoop())
     {
       SUBGHZ.showResultProtAnalyzer();
-      delay(1000);
+      //delay(1000); - OZ CHANGES FOR TESTING
       SUBGHZ.resetProtAnalyzer();
     }
     delay(1);
@@ -198,7 +201,7 @@ void loop()
     if (SUBGHZ.CaptureLoop())
     {
       SUBGHZ.disableReceiver();
-      delay(1000);
+      //delay(1000); - OZ CHANGES FOR TESTING
       SUBGHZ.showResultRecPlay();
       currentState = STATE_IDLE;
     }
@@ -255,6 +258,15 @@ void loop()
     SUBGHZ.disableTransmit();
 
     lv_label_set_text(ui_lblPresetsStatus, String("Sending Flipper Complete ! \n\nSample: " + String(tempSampleCount) + String(" | Freq: ") + String(tempFreq) + String(" mHz")).c_str());
+
+    currentState = STATE_IDLE;
+  }else if (currentState == STATE_SEND_BLESPAM)
+  {
+    Print_Debug(String("Send BLE SPAM, sample count: " + String(tempSampleCount) + String(" | Frequency: ") + String(tempFreq)).c_str());
+
+    BLEspam();
+
+    lv_label_set_text(ui_lblPresetsStatus, String("Sending BLE SPAM! \n\nSample: " + String(tempSampleCount) + String(" | Freq: ") + String(tempFreq) + String(" mHz")).c_str());
 
     currentState = STATE_IDLE;
   }
@@ -1281,4 +1293,75 @@ void event_exit_wifi_screen(lv_event_t *e)
   WiFi.disconnect(true);
 
   lv_scr_load(ui_scrMain);
+}
+
+
+// ---------------------------------------------------------------------
+// void event_save_capture_rec_play(lv_event_t * e);
+// ---------------------------------------------------------------------
+void event_save_capture_rec_play(lv_event_t * e)
+{
+  SUBGHZ.saveSamples();
+}
+
+// ---------------------------------------------------------------------
+// void fcnBleScreen(lv_event_t * e);
+// ---------------------------------------------------------------------
+void fcnBleScreen(lv_event_t * e)
+{
+  Print_Debug("event_load_screen_ble");
+lv_scr_load(ui_scrBLEApps);
+
+
+}
+
+// ---------------------------------------------------------------------
+// void event_exit_ble_screen(lv_event_t * e);
+// ---------------------------------------------------------------------
+void event_exit_ble_screen(lv_event_t * e)
+{
+  Print_Debug("event_exit_ble__screen");
+currentState=STATE_IDLE;
+lv_scr_load(ui_scrMain);
+
+}
+
+// ---------------------------------------------------------------------
+// void fcnBLEToggle(lv_event_t * e);
+// ---------------------------------------------------------------------
+void fcnBLEToggle(lv_event_t * e)
+{
+Print_Debug("event_start_stop_ble_app");
+ 
+ 
+  
+
+  if (currentState == STATE_IDLE)
+  {
+    // Start
+    //float freq = String(lv_textarea_get_text(ui_txt1101GenFreq)).toFloat();
+    BLEsetup();
+    lv_obj_add_state(ui_swBLEEnable, LV_STATE_CHECKED);
+    lv_label_set_text(ui_lblBLEEnable, "BLE ON");
+    //SUBGHZ.setFrequency(freq);
+    //SUBGHZ.enableTransmit();
+    currentState = STATE_SEND_BLESPAM;
+  }
+  else
+  {
+    // Stop
+    lv_obj_clear_state(ui_swBLEEnable, LV_STATE_CHECKED);
+    lv_label_set_text(ui_lblBLEEnable, "BLE OFF");
+    //SUBGHZ.disableTransmit();
+    currentState = STATE_IDLE;
+  }
+
+}
+
+// ---------------------------------------------------------------------
+// void fcnBLEType(lv_event_t * e);
+// ---------------------------------------------------------------------
+void fcnBLEType(lv_event_t * e)
+{
+
 }

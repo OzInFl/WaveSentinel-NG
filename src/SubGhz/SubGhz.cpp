@@ -1,4 +1,5 @@
 #include "SubGhz.h"
+#include <SD.h>
 
 // CC1101 Default Settings
 float CC1101_MHZ = 433.92;
@@ -711,4 +712,37 @@ bool SubGhz::sendCapture()
     lv_label_set_text(ui_lblRecPlayStatus, String("Playback Complete ! Sample: " + String(samplecount)).c_str());
 
     return true;
+}
+
+
+// ---------------------------------------------------------------------
+// void SubGhz::saveSamples(int samples[], int samplesLength)
+// ---------------------------------------------------------------------
+void SubGhz::saveSamples(){
+// Generate a random filename
+    char filename[20];
+    sprintf(filename, "/capture_%04d.txt", random(1000, 10000));
+
+    // Open the file for writing
+    File file = SD.open(filename, FILE_WRITE);
+
+    if (!file) {
+        Serial.println("Failed to open file for writing");
+        //return false;
+    }
+
+    // Write the sample data to the file
+    for (int i = 1; i < samplecount; i += 2) {
+        file.print(sample[i]);
+        file.print(",");
+        file.println(sample[i + 1]);
+        
+        //digitalWrite(CC1101_GDO0, HIGH);
+        //delayMicroseconds(sample[i]);
+        //digitalWrite(CC1101_GDO0, LOW);
+        //delayMicroseconds(sample[i + 1]);
+    }
+
+    // Close the file
+    file.close();
 }
