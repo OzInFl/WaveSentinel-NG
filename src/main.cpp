@@ -1301,7 +1301,7 @@ void event_exit_wifi_screen(lv_event_t *e)
 // ---------------------------------------------------------------------
 void event_save_capture_rec_play(lv_event_t * e)
 {
-  SUBGHZ.saveSamples();
+  //SUBGHZ.saveSamples();
 }
 
 // ---------------------------------------------------------------------

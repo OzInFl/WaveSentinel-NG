@@ -12,14 +12,14 @@
 
 #include <ELECHOUSE_CC1101_SRC_DRV.h>
 #include <RCSwitch.h>
-
-enum CC1101Preset
-{
-  AM650,
-  AM270,
-  FM238,
-  FM476,
-};
+#include <vector>
+#include <ctime>
+#include <sstream>
+#include <array>      // For std::array
+#include <SD.h>
+//#include "SD/SDCard.h"
+#include "SubGhzTypes.h"
+#include "FlipperSubFile.h"
 
 class SubGhz
 {
@@ -28,6 +28,9 @@ private:
   static const char *bin2tristate(const char *bin);
   static char *dec2binWzerofill(unsigned long Dec, unsigned int bitLength);
   void send_byte(uint8_t dataByte);
+  
+  String generateRandomString(int length);
+  String generateFilename(float frequency, int modulation, float bandwidth);
 
 public:
   bool init();
@@ -57,7 +60,6 @@ public:
   void sendLastSignal();
   bool send_tesla();
   void sendSamples(int samples[], int samplesLength);
-  void saveSamples();
   bool sendCapture();
 
   void resetProtAnalyzer();

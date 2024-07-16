@@ -1,5 +1,4 @@
 #include "SubGhz.h"
-#include <SD.h>
 
 // CC1101 Default Settings
 float CC1101_MHZ = 433.92;
@@ -11,6 +10,7 @@ int CC1101_PKT_FORMAT = 3; // Format of RX and TX data. 0=Normal mode, use FIFOs
                            //                           1=Synchronous serial mode, Data in on GDO0 and data out on either of the GDOx pins
                            //                           2=Random TX test mode; sends random data using PN9 generator. Works as normal mode, setting 0 in RX
                            //                           3=Asynchronous serial mode, Data in on GDO0 and data out on either of the GDOx pins
+CC1101Preset CC1101_PRESET = CUSTOM;
 
 // CC1101 - RCSW Apps Stuff
 RCSwitch mySwitch = RCSwitch();
@@ -146,25 +146,31 @@ void SubGhz::setPreset(CC1101Preset preset)
         CC1101_DRATE = 3.79372;
         CC1101_RX_BW = 650.00;
         CC1101_DEVIATION = 1.58;
+        CC1101_PRESET = preset;
         break;
     case AM270:
         CC1101_MODULATION = 2;
         CC1101_DRATE = 3.79372;
         CC1101_RX_BW = 270.833333;
         CC1101_DEVIATION = 1.58;
+        CC1101_PRESET = preset;
         break;
     case FM238:
         CC1101_MODULATION = 0;
         CC1101_DRATE = 4.79794;
         CC1101_RX_BW = 270.833333;
         CC1101_DEVIATION = 2.380371;
+        CC1101_PRESET = preset;
         break;
     case FM476:
         CC1101_MODULATION = 0;
         CC1101_DRATE = 4.79794;
         CC1101_RX_BW = 270.833333;
         CC1101_DEVIATION = 47.60742;
+        CC1101_PRESET = preset;
         break;
+    case CUSTOM:
+        CC1101_PRESET = preset;
     default:
         break;
     }
@@ -393,27 +399,74 @@ void SubGhz::sendLastSignal()
     mySwitch.send(tempValue, tempBitLength); // send Received value/bits
 }
 
+String SubGhz::generateRandomString(int length)
+{
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+
+    const std::string characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+    std::stringstream ss;
+    for (int i = 0; i < length; ++i) {
+        int randomIndex = std::rand() % characters.size();
+        char randomChar = characters[randomIndex];
+        ss << randomChar;
+    }
+
+    return String(ss.str().c_str());
+}
+
+String SubGhz::generateFilename(float frequency, int modulation, float bandwidth)
+{
+    char filenameBuffer[100];
+
+    sprintf(filenameBuffer, "%d_%s_%d_%s.sub", static_cast<int>(frequency * 100), modulation == 2 ? "AM" : "FM", static_cast<int>(bandwidth),
+            generateRandomString(8).c_str());
+
+    return String(filenameBuffer);
+}
+
 // ---------------------------------------------------------------------
 // bool SubGhz::CaptureLoop()
 // ---------------------------------------------------------------------
 bool SubGhz::CaptureLoop()
 {
+    File outputFile;
     if (CheckReceived())
     {
         Print_Debug("CaptureLoop()");
 
-        String rawString = "";
+       std::stringstream rawSignal;
 
-        for (int i = 1; i < samplecount; i++)
-        {
-            rawString += sample[i];
-            rawString += ",";
+        for (int i = 0; i < samplecount; i++) {
+            rawSignal << (i > 0 ? (i % 2 == 1 ? " -" : " ") : "");
+            rawSignal << sample[i];
         }
 
-        Print_Debug(String(String("New Signal RAW: \n") + String(rawString)).c_str());
+        String filename = generateFilename(CC1101_MHZ, CC1101_MODULATION, CC1101_RX_BW);
+        String fullPath = "/records/folder/" + filename; 
+        outputFile = SD.open(fullPath.c_str(), "w");
+        if (outputFile) {
+            std::vector<byte> customPresetData;
+            if (CC1101_PRESET == CUSTOM) {
+                customPresetData.insert(customPresetData.end(), {
+                    CC1101_MDMCFG4, ELECHOUSE_cc1101.SpiReadReg(CC1101_MDMCFG4),
+                    CC1101_MDMCFG3, ELECHOUSE_cc1101.SpiReadReg(CC1101_MDMCFG3),
+                    CC1101_MDMCFG2, ELECHOUSE_cc1101.SpiReadReg(CC1101_MDMCFG2),
+                    CC1101_DEVIATN, ELECHOUSE_cc1101.SpiReadReg(CC1101_DEVIATN),
+                    CC1101_FREND0,  ELECHOUSE_cc1101.SpiReadReg(CC1101_FREND0),
+                    0x00, 0x00
+                });
 
-        rawString = "";
-
+                std::array<byte,8> paTable;
+                ELECHOUSE_cc1101.SpiReadBurstReg(0x3E, paTable.data(), paTable.size());
+                customPresetData.insert(customPresetData.end(), paTable.begin(), paTable.end());
+            }
+            FlipperSubFile::generateRaw(outputFile, CC1101_PRESET, customPresetData, rawSignal, CC1101_MHZ);
+            outputFile.close();
+        } else {
+            // @todo: Log/send error
+            return false;
+        }
         return true;
     }
     else
@@ -715,34 +768,3 @@ bool SubGhz::sendCapture()
 }
 
 
-// ---------------------------------------------------------------------
-// void SubGhz::saveSamples(int samples[], int samplesLength)
-// ---------------------------------------------------------------------
-void SubGhz::saveSamples(){
-// Generate a random filename
-    char filename[20];
-    sprintf(filename, "/capture_%04d.txt", random(1000, 10000));
-
-    // Open the file for writing
-    File file = SD.open(filename, FILE_WRITE);
-
-    if (!file) {
-        Serial.println("Failed to open file for writing");
-        //return false;
-    }
-
-    // Write the sample data to the file
-    for (int i = 1; i < samplecount; i += 2) {
-        file.print(sample[i]);
-        file.print(",");
-        file.println(sample[i + 1]);
-        
-        //digitalWrite(CC1101_GDO0, HIGH);
-        //delayMicroseconds(sample[i]);
-        //digitalWrite(CC1101_GDO0, LOW);
-        //delayMicroseconds(sample[i + 1]);
-    }
-
-    // Close the file
-    file.close();
-}
