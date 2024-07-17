@@ -441,9 +441,11 @@ bool SubGhz::CaptureLoop()
             rawSignal << (i > 0 ? (i % 2 == 1 ? " -" : " ") : "");
             rawSignal << sample[i];
         }
-
+        
+        if (SD.begin(SD_CS))
+    {
         String filename = generateFilename(CC1101_MHZ, CC1101_MODULATION, CC1101_RX_BW);
-        String fullPath = "/records/folder/" + filename; 
+        String fullPath = "/subghz/captures/" + filename; 
         outputFile = SD.open(fullPath.c_str(), "w");
         if (outputFile) {
             std::vector<byte> customPresetData;
@@ -469,6 +471,7 @@ bool SubGhz::CaptureLoop()
         }
         return true;
     }
+}
     else
     {
         return false;
