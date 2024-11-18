@@ -67,6 +67,7 @@ public:
   void showResultRecPlay();
 
   bool CaptureLoop();
+  bool CaptureLoopSD();
   bool ProtAnalyzerLoop();
   void ScannerLoop();
   void GeneratorLoop();

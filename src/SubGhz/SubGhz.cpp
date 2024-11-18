@@ -425,10 +425,39 @@ String SubGhz::generateFilename(float frequency, int modulation, float bandwidth
     return String(filenameBuffer);
 }
 
+
+
+
 // ---------------------------------------------------------------------
 // bool SubGhz::CaptureLoop()
 // ---------------------------------------------------------------------
 bool SubGhz::CaptureLoop()
+{
+    if (CheckReceived())
+    {
+        Print_Debug("CaptureLoop()");
+
+        String rawString = "";
+
+        for (int i = 1; i < samplecount; i++)
+        {
+            rawString += sample[i];
+            rawString += ",";
+        }
+
+        Print_Debug(String(String("New Signal RAW: \n") + String(rawString)).c_str());
+
+        rawString = "";
+
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool SubGhz::CaptureLoopSD()
 {
     File outputFile;
     if (CheckReceived())
@@ -477,6 +506,9 @@ bool SubGhz::CaptureLoop()
         return false;
     }
 }
+////----Alt ORig
+
+
 
 // ---------------------------------------------------------------------
 // bool SubGhz::ProtAnalyzerLoop()

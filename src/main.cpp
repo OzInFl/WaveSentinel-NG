@@ -191,7 +191,7 @@ void loop()
     if (SUBGHZ.ProtAnalyzerLoop())
     {
       SUBGHZ.showResultProtAnalyzer();
-      //delay(1000); - OZ CHANGES FOR TESTING
+      delay(1000); 
       SUBGHZ.resetProtAnalyzer();
     }
     delay(1);
@@ -201,7 +201,7 @@ void loop()
     if (SUBGHZ.CaptureLoop())
     {
       SUBGHZ.disableReceiver();
-      //delay(1000); - OZ CHANGES FOR TESTING
+      //delay(1000); //- OZ CHANGES FOR TESTING
       SUBGHZ.showResultRecPlay();
       currentState = STATE_IDLE;
     }
